@@ -1,3 +1,8 @@
+"""
+Project name: arXiv digestor
+Author: Jiaxiaang Cai, Shiyi Gao
+"""
+
 import argparse
 import configparser
 import sys
@@ -6,12 +11,40 @@ import cli_mode as cm
 import basic_search_tool as bst
 import advanced_search_tool as ast
 
+def transfer_to_download_mode(download_cmd):
+    criterion = ['--rel', '--lud', '--smd']
+    order = ['--des', '--asc']
+    if len(download_cmd) > 4:
+        exit('The maximal length of input arguments should not exceed 4')
+
+    if len(download_cmd) == 1:
+        bst.arxiv_search(download_cmd[0], 10, '--rel', '--des')
+        # The default setting
+        
+    # now the length of arguments is limited to 2, 3, 4, treat them separately
+    if download_cmd[1].isdigit() and not download_cmd[1] == 0:
+        if len(download_cmd) == 2:
+            bst.arxiv_search(download_cmd[0], int(download_cmd[1]), '--rel', '--des')
+        elif len(download_cmd) == 3:
+            if download_cmd[2] in criterion:
+                bst.arxiv_search(download_cmd[0], int(download_cmd[1]), download_cmd[2], '--des')
+            else:
+                exit('Please enter legal input for parameter search_criterion')
+        elif len(download_cmd) == 4:
+            if download_cmd[2] in criterion and download_cmd[3] in order:
+                bst.arxiv_search(download_cmd[0], int(download_cmd[1]), download_cmd[2], download_cmd[3])
+            else:
+                exit('Please enter legal input for parameters search_criterion and search_order')
+    else:
+        exit('Please enter integer digit for the parameter num_download')
 
 
 if __name__ == '__main__':
     
     config = configparser.ConfigParser()
     config.read('config.ini')
+    flag_excel = config['download_history'].getboolean('save_excel')
+    download_path = config['download_option']['save_folder']
     # first read configuration from config.ini
 
     if config['advanced_search'].getboolean('enable') == True:
@@ -23,20 +56,21 @@ if __name__ == '__main__':
         cm.cli_mode()
     # no arguments given, start cli mode to ask the user to provide information.
 
-    main_parser = argparse.ArgumentParser(description="Search tool for arXiv, leave no additional cli element for cli mode",
-                                          add_help=False)
-    switch = main_parser.add_mutually_exclusive_group()
+    # cli parser below
+    parser = argparse.ArgumentParser(description="Search tool for arXiv")
+    switch = parser.add_mutually_exclusive_group()
     # history and download methods are mutually exclusive.
     switch.add_argument('-i', '--history', 
-                        help="Display previous search", action='store_true')
+                        help="display previous search", action='store_true')
     switch.add_argument('-d', '--download', 
-                        help="Search and download by title", 
-                        metavar=("search_term", "n_down"), nargs=2, type=str)
-    main_args, _ = main_parser.parse_known_args()
-
-    parser = argparse.ArgumentParser(parents=[main_parser])
-    if main_args.download != None:
-        parser.add_argument('--rel', help="Search by relevance", action='store_false')
+                        help="usage: [download] = search_term num_download(optional, default 10) search_criterion(optional) search_order(optional)", 
+                        nargs='+', type=str)
+    
     args = parser.parse_args()
-
+    
+    if not args.history:
+        transfer_to_download_mode(args.download)
+    
+    bst.show_history()
+        
     exit(0)
