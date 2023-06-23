@@ -24,18 +24,18 @@ $ pip install -r requirements.txt
 $ python arxiv_digester.py [-d|--download] search_term num_download sort_criterion sort_order
 ```
 
-*   [search_term] 
+[search_term] 
 *   specifies the keyword in search (mandatory)
 
-*   [num_download] 
+[num_download] 
 *   Number of files you want to download (optional, 10 in default)
 
-*   [sort_criterion] (optional)
+[sort_criterion] (optional)
 *    --rel :=> Relevance (default)
 *    --smd :=> SubmittedDate
 *    --lud :=> LastUpdatedDate
 
-*   [sort_order] (optional)
+[sort_order] (optional)
 *    --des :=> Descending (default)
 *    --asc :=> Ascending
 
