@@ -9,14 +9,6 @@ cli_instruction = [
 ]
 mode_option = ['s', 'h']
 
-def cls():
-    # function to clear the screen
-    if os.name == 'nt':
-        _ = os.system('cls')
-        # windows
-    else:
-        _ = os.system('clear')
-        # mac or linux
 
 def search_mode():
     return
@@ -27,7 +19,7 @@ def cli_mode():
 
     if mode.lower not in mode_option:
         _ = input('Illegal input, press any key to reenter.')
-        cls()
+        bst.cls()
         cli_mode()
     
     if mode.lower == 's':
