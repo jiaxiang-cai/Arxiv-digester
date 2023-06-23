@@ -1,0 +1,2 @@
+arxiv==1.4.7
+openpyxl==3.1.2

@@ -51,9 +51,9 @@ if __name__ == '__main__':
         # create the folder for downloaded paper if not exists
 
 
-    if config['advanced_search'].getboolean('enable') == True:
-        ast.advanced_search(config)
-        exit(0)
+    # if config['advanced_search'].getboolean('enable') == True:
+    #     ast.advanced_search(config)
+    #     exit(0)
     # advanced search mode, read settings in './config.ini' and perform desired operation.
 
     if len(sys.argv) == 1:

@@ -161,11 +161,11 @@ def save_result_excel(results):
         # if it doesn't exist, then create a new workbook.
         # the sheet name will be the search term with date.
         wb = openpyxl.load_workbook("history.xlsx")
-        ws = wb.create_sheet(f"Search Result-{results['Search Term']}-{results['Date']}")
+        ws = wb.create_sheet(f"Search Result-{results['Search Term']}")
     else:
         wb = openpyxl.Workbook()
         ws = wb.active
-        ws.title = f"Search Result-{results['Search Term']}-{results['Date']}"
+        ws.title = f"Search Result-{results['Search Term']}"
 
     ws.append(['Title', 'Authors', 'Abstract', 'Upload Date', 'DOI', 'Categories'])
     # create the header of the excel file. [details of the downloaded articles]

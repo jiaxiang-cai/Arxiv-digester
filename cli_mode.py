@@ -1,8 +1,7 @@
 import os
 import basic_search_tool as bst
 
-cli_instruction = [
-    """
+cli_instruction = """
     This is a crawling tool for arXiv, utilizing the official API.
     The cli mode is for basic use, for advanced application please edit config.ini and directly execute the arxiv_digester.py
 
@@ -11,8 +10,7 @@ cli_instruction = [
     [h] Display history
 
     """
-]
-mode_option = ['s', 'h']
+mode_option = ('s', 'h')
 
 
 def search_mode(download_path):
@@ -53,17 +51,17 @@ def search_mode(download_path):
 
 def cli_mode(download_path):
     print(cli_instruction)
-    mode = input('Please enter the mode:\n')
+    mode = input('Please enter the mode:\n').lower()
 
-    if mode.lower not in mode_option:
+    if mode not in mode_option:
         _ = input('Illegal input, press any key to reenter.')
         bst.cls()
-        cli_mode()
+        cli_mode(download_path)
     
-    if mode.lower == 's':
+    if mode == 's':
         search_mode(download_path)
     
-    if mode.lower == 'h':
+    if mode == 'h':
         bst.show_history()
 
     exit(0)
