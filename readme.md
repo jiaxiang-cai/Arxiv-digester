@@ -3,9 +3,9 @@
 ## About our project
 
 This project is aimed to yield a Python scipt run in cli to allow the users to:
-*[1] [search] Perform search with some "search_term" and download N files from arXiv
-*[2] [history] Record the download related command history as json or Excel files.
-*[3] [dual-mode] Allow input with/without cli arguments.
+*   [1] [search] Perform search with some "search_term" and download N files from arXiv
+*   [2] [history] Record the download related command history as json or Excel files.
+*   [3] [dual-mode] Allow input with/without cli arguments.
 
 Unfortunately, it is too hard for us to implement the advanced search tool, due to limited experience and time issue.
 We hope we can complete it in the future if possible.
@@ -57,4 +57,4 @@ $ python arxiv_digester.py [-i|--history]
 * [Jiaxiang cai](https://github.com/jiaxiang-cai)
 * [Shiyi gao](https://github.com/shiyig233)
 
-# Tester
+# Reviewer
