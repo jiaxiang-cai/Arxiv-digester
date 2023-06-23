@@ -43,7 +43,6 @@ if __name__ == '__main__':
     
     config = configparser.ConfigParser()
     config.read('config.ini')
-    flag_excel = config['download_history'].getboolean('save_excel')
     save_path = config['download_option']['save_folder']
     # first read configuration from config.ini
     download_path = os.path.join(os.getcwd(), save_path)
@@ -58,7 +57,7 @@ if __name__ == '__main__':
     # advanced search mode, read settings in './config.ini' and perform desired operation.
 
     if len(sys.argv) == 1:
-        cm.cli_mode()
+        cm.cli_mode(download_path)
     # no arguments given, start cli mode to ask the user to provide information.
 
     # cli parser below
