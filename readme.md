@@ -39,10 +39,13 @@ $ python arxiv_digester.py [-d|--download] search_term num_download sort_criteri
 *    --des :=> Descending (default)
 *    --asc :=> Ascending
 
-*   PDF files would be saved in fthe folder specifies at config.ini (in default ./articles)
-*   In config.ini, save_excel allows user to trigger if he/she wants to save the result as Excel file 'history.xlsx' for future review.
 
-*   The download log will be saved in 'history.json', please do not delete it if you don't want to download duplicate files.
+
+PDF files would be saved in fthe folder specifies at config.ini (in default ./articles)
+
+In config.ini, save_excel allows user to trigger if he/she wants to save the result as Excel file 'history.xlsx' for future review.
+
+The download log will be saved in 'history.json', please do not delete it if you don't want to download duplicate files.
 
 ### History
 
@@ -52,7 +55,11 @@ $ python arxiv_digester.py [-i|--history]
 
 *   Load data from history.json, user can preview the search_term, what time the search was conducted, how many files retrived with a user friendly interface.
 
+### Directly excute the script
 
+```bash
+$ python arxiv_digester.py
+```
 # Contributer
 * [Jiaxiang cai](https://github.com/jiaxiang-cai)
 * [Shiyi gao](https://github.com/shiyig233)
