@@ -7,8 +7,7 @@ This project is aimed to yield a Python scipt run in cli to allow the users to:
 *   [2] [history] Record the download related command history as json or Excel files.
 *   [3] [dual-mode] Allow input with/without cli arguments.
 
-Unfortunately, it is too hard for us to implement the advanced search tool, due to limited experience and time issue.
-We hope we can complete it in the future if possible.
+Unfortunately, the advance search mode is only partially functional with limited usage, but following https://info.arxiv.org/help/api/user-manual.html#query_details you can compose your search option in cli mode. (If you don't want to input parameter in the config.ini)
 ## Usage
 
 ### Installation
@@ -64,7 +63,8 @@ $ python arxiv_digester.py
 If the advance search is turned off (in config.ini), you will enter a cli program to compose your own query term
 
 #### Advance search
-If the advance search is turned on, you can compose your search option.
+If the advance search is turned on, you can compose your search option in config.ini
+
 * You can choose to search by title, abstract or both (with relation 'and' or 'or')
 * You can search in specific category, following https://arxiv.org/category_taxonomy
 
