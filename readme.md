@@ -60,6 +60,14 @@ $ python arxiv_digester.py [-i|--history]
 ```bash
 $ python arxiv_digester.py
 ```
+
+If the advance search is turned off (in config.ini), you will enter a cli program to compose your own query term
+
+#### Advance search
+If the advance search is turned on, you can compose your search option.
+* You can choose to search by title, abstract or both (with relation 'and' or 'or')
+* You can search in specific category, following https://arxiv.org/category_taxonomy
+
 # Contributer
 * [Jiaxiang cai](https://github.com/jiaxiang-cai)
 * [Shiyi gao](https://github.com/shiyig233)
